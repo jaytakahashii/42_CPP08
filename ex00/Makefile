@@ -1,6 +1,6 @@
 MAKEFILE 		= Makefile
 
-NAME				= Sample
+NAME				= Easyfind
 
 SRC_DIR			= src/
 OBJ_DIR			= .obj/
@@ -8,6 +8,7 @@ OBJ_DIR			= .obj/
 INCLUDE_DIR	= include/
 INCLUDE			= -I $(INCLUDE_DIR)
 HEADERS			= color.hpp \
+							easyfind.hpp \
 HEADER			= $(addprefix $(INCLUDE_DIR), $(HEADERS))
 
 DEPS				= $(HEADER) $(MAKEFILE)
