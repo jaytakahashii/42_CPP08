@@ -2,33 +2,68 @@
 #include <list>
 #include <vector>
 
+#include "color.hpp"
 #include "easyfind.hpp"
 
 int main() {
+  std::cout << YELLOW << "===== TEST =====\n" << std::endl;
   try {
+    std::cout << BOLDWHITE << "===== Vector Test =====" << RESET << std::endl;
     std::vector<int> vec;
     for (int i = 0; i < 10; ++i)
       vec.push_back(i * 2);  // 0, 2, 4, ..., 18
 
-    std::vector<int>::iterator it = easyfind(vec, 6);
-    std::cout << "Found: " << *it << std::endl;
+    std::cout << "Vector: ";
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+      std::cout << *it << " ";
+    std::cout << std::endl;
 
-    it = easyfind(vec, 7);  // 例外発生
-    std::cout << "Found: " << *it << std::endl;
+    std::cout << "Found '6': ";
+    std::vector<int>::iterator it = easyfind(vec, 6);
+    std::cout << *it << std::endl;
+
+    std::cout << "Found '7': ";
+    it = easyfind(vec, 7);
+    std::cout << *it << std::endl;
   } catch (const std::exception& e) {
-    std::cerr << "Exception: " << e.what() << std::endl;
+    std::cerr << RED "\nException: " << e.what() << RESET << std::endl;
   }
 
+  std::cout << BOLDWHITE << "\n===== List Test =====" << RESET << std::endl;
   try {
     std::list<int> lst;
     lst.push_back(42);
     lst.push_back(21);
 
+    std::cout << "List: ";
+    for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it)
+      std::cout << *it << " ";
+    std::cout << std::endl;
+
+    std::cout << "Found '42': ";
     std::list<int>::iterator it = easyfind(lst, 42);
-    std::cout << "Found in list: " << *it << std::endl;
+    std::cout << *it << std::endl;
   } catch (const std::exception& e) {
-    std::cerr << "Exception: " << e.what() << std::endl;
+    std::cerr << RED "\nException: " << RESET << e.what() << std::endl;
   }
 
+  std::cout << BOLDWHITE << "\n===== Deque List Test =====" << RESET
+            << std::endl;
+  try {
+    std::deque<int> deq;
+    deq.push_back(42);
+    deq.push_back(21);
+
+    std::cout << "Deque: ";
+    for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); ++it)
+      std::cout << *it << " ";
+    std::cout << std::endl;
+
+    std::cout << "Found '42': ";
+    std::deque<int>::iterator it = easyfind(deq, 42);
+    std::cout << *it << std::endl;
+  } catch (const std::exception& e) {
+    std::cerr << RED "\nException: " RESET << e.what() << std::endl;
+  }
   return 0;
 }
