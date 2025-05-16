@@ -8,9 +8,10 @@ class Span {
   unsigned int _maxSize;
   std::vector<int> _numbers;
 
+  Span();  // Default constructor is private to prevent usage
+
  public:
   // === OCF ===
-  Span();
   Span(const Span& other);
   Span& operator=(const Span& other);
   ~Span();
