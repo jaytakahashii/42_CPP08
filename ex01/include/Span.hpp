@@ -1,0 +1,25 @@
+#pragma once
+
+#include <stdexcept>
+#include <vector>
+
+class Span {
+ private:
+  unsigned int _maxSize;
+  std::vector<int> _numbers;
+
+ public:
+  // === OCF ===
+  Span();
+  Span(const Span& other);
+  Span& operator=(const Span& other);
+  ~Span();
+
+  // === Constructors ===
+  Span(unsigned int N);
+
+  // === Methods ===
+  void addNumber(int number);
+  int shortestSpan() const;
+  int longestSpan() const;
+};
