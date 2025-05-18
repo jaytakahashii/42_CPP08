@@ -17,8 +17,9 @@ static void printStackState(const std::string& label,
   std::cout << "Empty: " << (s.empty() ? "true" : "false") << std::endl;
 }
 
+template <typename T>
 static void printMutantStackState(const std::string& label,
-                                  const MutantStack<int>& s) {
+                                  const MutantStack<T>& s) {
   std::cout << BOLDGREEN << label << " (MutantStack)" << RESET << std::endl;
   std::cout << "Top: " << s.top() << std::endl;
   std::cout << "Size: " << s.size() << std::endl;
@@ -48,6 +49,7 @@ int main() {
             << std::endl;
   std::cout << BOLDGREEN << "MutantStack top(): " << RESET << mstack.top()
             << std::endl;
+  std::cout << std::endl;
 
   // pop
   stdStack.pop();
@@ -56,24 +58,20 @@ int main() {
   printStackState("After Pop", stdStack);
   printMutantStackState("After Pop", mstack);
 
-  // empty & size
-  std::cout << "\n"
-            << BOLDYELLOW << "std::stack is empty?: " << RESET
-            << (stdStack.empty() ? "true" : "false") << std::endl;
-  std::cout << BOLDGREEN << "MutantStack is empty?: " << RESET
-            << (mstack.empty() ? "true" : "false") << std::endl;
-
   sectionTitle("MutantStack Iterator Traversal");
   mstack.push(100);
   mstack.push(200);
   mstack.push(300);
 
-  std::cout << BOLDGREEN << "Forward: ";
+  printMutantStackState("After Additional Push", mstack);
+  std::cout << std::endl;
+
+  std::cout << BOLDGREEN << "Forward: " << RESET;
   for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
     std::cout << *it << " ";
   std::cout << RESET << std::endl;
 
-  std::cout << BOLDGREEN << "Reverse: ";
+  std::cout << BOLDGREEN << "Reverse: " << RESET;
   for (MutantStack<int>::reverse_iterator rit = mstack.rbegin();
        rit != mstack.rend(); ++rit)
     std::cout << *rit << " ";
@@ -83,15 +81,9 @@ int main() {
   MutantStack<int> copyStack(mstack);
   MutantStack<int> assignedStack;
   assignedStack = mstack;
-  std::cout << BOLDGREEN << "Copied stack top: " << RESET << copyStack.top()
-            << std::endl;
-  std::cout << BOLDGREEN << "Assigned stack size: " << RESET
-            << assignedStack.size() << std::endl;
 
-  sectionTitle("std::stack Compatibility Construction");
-  std::stack<int> constructedStack(mstack);
-  std::cout << BOLDYELLOW << "Constructed std::stack top: " << RESET
-            << constructedStack.top() << std::endl;
+  printMutantStackState("Copy Stack", copyStack);
+  printMutantStackState("Assigned Stack", assignedStack);
 
   sectionTitle("MutantStack<std::string> Test");
   MutantStack<std::string> strStack;
@@ -99,9 +91,14 @@ int main() {
   strStack.push("beta");
   strStack.push("gamma");
 
+  printMutantStackState("String Stack", strStack);
+  std::cout << std::endl;
+
+  std::cout << BOLDGREEN << "String Stack Forward: " << RESET;
   for (MutantStack<std::string>::iterator it = strStack.begin();
        it != strStack.end(); ++it)
     std::cout << *it << " ";
+  std::cout << std::endl;
   std::cout << std::endl;
 
   return 0;
