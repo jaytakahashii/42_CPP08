@@ -5,19 +5,20 @@
 #include "MutantStack.hpp"
 #include "color.hpp"
 
-void sectionTitle(const std::string& title) {
+static void sectionTitle(const std::string& title) {
   std::cout << BOLDWHITE << "\n=== " << title << " ===\n" << RESET;
 }
 
-void printStackState(const std::string& label, const std::stack<int>& s) {
+static void printStackState(const std::string& label,
+                            const std::stack<int>& s) {
   std::cout << BOLDYELLOW << label << " (std::stack)" << RESET << std::endl;
   std::cout << "Top: " << s.top() << std::endl;
   std::cout << "Size: " << s.size() << std::endl;
   std::cout << "Empty: " << (s.empty() ? "true" : "false") << std::endl;
 }
 
-void printMutantStackState(const std::string& label,
-                           const MutantStack<int>& s) {
+static void printMutantStackState(const std::string& label,
+                                  const MutantStack<int>& s) {
   std::cout << BOLDGREEN << label << " (MutantStack)" << RESET << std::endl;
   std::cout << "Top: " << s.top() << std::endl;
   std::cout << "Size: " << s.size() << std::endl;
