@@ -7,6 +7,14 @@
     "*.layout-template": "vue",
     "*.vue": "vue",
     "stdexcept": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "array": "cpp",
+    "deque": "cpp",
+    "iterator": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "vector": "cpp",
+    "*.tpp": "cpp"
   }
 }
