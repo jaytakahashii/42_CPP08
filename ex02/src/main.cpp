@@ -85,6 +85,21 @@ int main() {
   printMutantStackState("Copy Stack", copyStack);
   printMutantStackState("Assigned Stack", assignedStack);
 
+  sectionTitle("Const Iterator Check");
+  const MutantStack<int> constStack(mstack);  // const にキャストしてチェック
+
+  std::cout << BOLDGREEN << "Const Forward: " << RESET;
+  for (MutantStack<int>::const_iterator cit = constStack.begin();
+       cit != constStack.end(); ++cit)
+    std::cout << *cit << " ";
+  std::cout << RESET << std::endl;
+
+  std::cout << BOLDGREEN << "Const Reverse: " << RESET;
+  for (MutantStack<int>::const_reverse_iterator crit = constStack.rbegin();
+       crit != constStack.rend(); ++crit)
+    std::cout << *crit << " ";
+  std::cout << RESET << std::endl;
+
   sectionTitle("MutantStack<std::string> Test");
   MutantStack<std::string> strStack;
   strStack.push("alpha");
