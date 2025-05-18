@@ -6,6 +6,7 @@
     "*.page-template": "vue",
     "*.layout-template": "vue",
     "*.vue": "vue",
-    "stdexcept": "cpp"
+    "stdexcept": "cpp",
+    "stack": "cpp"
   }
 }
