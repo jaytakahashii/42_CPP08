@@ -86,7 +86,7 @@ int main() {
   printMutantStackState("Assigned Stack", assignedStack);
 
   sectionTitle("Const Iterator Check");
-  const MutantStack<int> constStack(mstack);  // const にキャストしてチェック
+  const MutantStack<int> constStack(mstack);
 
   std::cout << BOLDGREEN << "Const Forward: " << RESET;
   for (MutantStack<int>::const_iterator cit = constStack.begin();
