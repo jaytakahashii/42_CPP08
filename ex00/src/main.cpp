@@ -7,7 +7,6 @@
 #include "easyfind.hpp"
 
 int main() {
-  std::cout << YELLOW << "===== TEST =====\n" << std::endl;
   try {
     std::cout << BOLDWHITE << "===== Vector Test =====" << RESET << std::endl;
     std::vector<int> vec;
