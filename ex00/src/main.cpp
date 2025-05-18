@@ -6,13 +6,16 @@
 #include "color.hpp"
 #include "easyfind.hpp"
 
+static void sectionTitle(const std::string& title) {
+  std::cout << BOLDWHITE << "\n=== " << title << " ===\n" << RESET;
+}
+
 int main() {
   try {
-    std::cout << BOLDWHITE << "===== Vector Test =====" << RESET << std::endl;
+    sectionTitle("Vector Test");
     std::vector<int> vec;
     for (int i = 0; i < 10; ++i)
       vec.push_back(i * 2);  // 0, 2, 4, ..., 18
-
     std::cout << "Vector: ";
     for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
       std::cout << *it << " ";
@@ -29,7 +32,7 @@ int main() {
     std::cerr << RED "\nException: " << e.what() << RESET << std::endl;
   }
 
-  std::cout << BOLDWHITE << "\n===== List Test =====" << RESET << std::endl;
+  sectionTitle("List Test");
   try {
     std::list<int> lst;
     lst.push_back(42);
@@ -47,8 +50,7 @@ int main() {
     std::cerr << RED "\nException: " << RESET << e.what() << std::endl;
   }
 
-  std::cout << BOLDWHITE << "\n===== Deque List Test =====" << RESET
-            << std::endl;
+  sectionTitle("Deque Test");
   try {
     std::deque<int> deq;
     deq.push_back(42);
