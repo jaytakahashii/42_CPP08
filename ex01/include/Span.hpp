@@ -5,7 +5,7 @@
 
 class Span {
  private:
-  unsigned int _maxSize;
+  unsigned _maxSize;
   std::vector<int> _numbers;
 
   Span();  // Default constructor is private to prevent usage
@@ -17,16 +17,16 @@ class Span {
   ~Span();
 
   // === Constructors ===
-  Span(unsigned int N);
+  Span(unsigned N);
 
   // === Methods ===
   void addNumber(int number);
-  int shortestSpan() const;
-  int longestSpan() const;
+  unsigned shortestSpan() const;
+  unsigned longestSpan() const;
 
   template <typename Iterator>
   void addNumbers(Iterator begin, Iterator end) {
-    unsigned int distance = std::distance(begin, end);
+    unsigned distance = std::distance(begin, end);
     if (_numbers.size() + distance > _maxSize) {
       throw std::runtime_error("Cannot add range: would exceed maximum size");
     }

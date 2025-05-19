@@ -75,7 +75,7 @@ int main() {
     Span smallSpan(5);
     std::vector<int> vec;
     for (int i = 0; i < 10; ++i)
-      vec.push_back(rand() % 100);
+      vec.push_back(rand());
     smallSpan.addNumbers(vec.begin(), vec.end());
   } catch (const std::exception& e) {
     std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
