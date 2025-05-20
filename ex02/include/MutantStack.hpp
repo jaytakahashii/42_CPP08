@@ -6,6 +6,13 @@
 template <typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container> {
  public:
+  // === OCF ===
+  MutantStack();
+  MutantStack(const MutantStack& other);
+  MutantStack& operator=(const MutantStack& other);
+  ~MutantStack();
+
+  // === Methods ===
   typedef typename Container::iterator iterator;
   typedef typename Container::const_iterator const_iterator;
   typedef typename Container::reverse_iterator reverse_iterator;

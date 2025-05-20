@@ -77,6 +77,12 @@ int main() {
     std::cout << *rit << " ";
   std::cout << RESET << std::endl;
 
+  MutantStack<int>::iterator it = mstack.begin();
+
+  std::cout << BOLDGREEN << "\nIterator Increment: " << RESET;
+  it++;
+  std::cout << *it << std::endl;
+
   sectionTitle("Copy and Assignment Check");
   MutantStack<int> copyStack(mstack);
   MutantStack<int> assignedStack;

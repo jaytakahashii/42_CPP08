@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <limits>
 
-Span::Span(unsigned int N) : _maxSize(N) {
+Span::Span(unsigned N) : _maxSize(N) {
 }
 
 Span::Span(const Span& other)
@@ -29,7 +29,7 @@ void Span::addNumber(int number) {
   _numbers.push_back(number);
 }
 
-int Span::shortestSpan() const {
+unsigned Span::shortestSpan() const {
   if (_numbers.size() <= 1) {
     throw std::runtime_error("Not enough numbers to calculate span");
   }
@@ -37,9 +37,10 @@ int Span::shortestSpan() const {
   std::vector<int> sorted = _numbers;
   std::sort(sorted.begin(), sorted.end());
 
-  int minSpan = std::numeric_limits<int>::max();
-  for (size_t i = 1; i < sorted.size(); ++i) {
-    int diff = sorted[i] - sorted[i - 1];
+  unsigned minSpan =
+      std::numeric_limits<int>::max() - std::numeric_limits<int>::min();
+  for (unsigned i = 1; i < sorted.size(); ++i) {
+    unsigned diff = sorted[i] - sorted[i - 1];
     if (diff < minSpan) {
       minSpan = diff;
     }
@@ -47,12 +48,12 @@ int Span::shortestSpan() const {
   return minSpan;
 }
 
-int Span::longestSpan() const {
+unsigned Span::longestSpan() const {
   if (_numbers.size() <= 1) {
     throw std::runtime_error("Not enough numbers to calculate span");
   }
 
-  int min = *std::min_element(_numbers.begin(), _numbers.end());
-  int max = *std::max_element(_numbers.begin(), _numbers.end());
+  unsigned min = *std::min_element(_numbers.begin(), _numbers.end());
+  unsigned max = *std::max_element(_numbers.begin(), _numbers.end());
   return max - min;
 }

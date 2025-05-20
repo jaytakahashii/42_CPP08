@@ -6,10 +6,14 @@
 #include "Span.hpp"
 #include "color.hpp"
 
+static void sectionTitle(const std::string& title) {
+  std::cout << BOLDWHITE << "\n=== " << title << " ===\n" << RESET;
+}
+
 int main() {
   srand(time(NULL));
 
-  std::cout << BOLDWHITE "=== Simple Test ===" RESET << std::endl;
+  sectionTitle("Simple Test");
   try {
     Span sp(5);
     sp.addNumber(6);
@@ -23,7 +27,7 @@ int main() {
     std::cerr << RED "Exception: " << e.what() << RESET << std::endl;
   }
 
-  std::cout << BOLDWHITE "\n=== Big Test ===" RESET << std::endl;
+  sectionTitle("Big Test");
   try {
     Span bigSpan(100000);
     for (int i = 0; i < 10000; ++i)
@@ -34,7 +38,7 @@ int main() {
     std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
   }
 
-  std::cout << BOLDWHITE "\n=== MORE BIG Test ===" RESET << std::endl;
+  sectionTitle("More Big Test");
   try {
     Span moreBigSpan(1000000);
     for (int i = 0; i < 100000; ++i)
@@ -45,7 +49,7 @@ int main() {
     std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
   }
 
-  std::cout << BOLDWHITE "\n=== Exception Test ===" RESET << std::endl;
+  sectionTitle("Exception Test");
   try {
     Span emptySpan(0);
     emptySpan.shortestSpan();
@@ -53,7 +57,7 @@ int main() {
     std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
   }
 
-  std::cout << BOLDWHITE "\n=== Iterator Range Test ===" RESET << std::endl;
+  sectionTitle("Iterator Range Test");
   try {
     Span rangeSpan(10);
     std::vector<int> vec;
@@ -66,13 +70,12 @@ int main() {
     std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
   }
 
-  std::cout << BOLDWHITE "\n=== Iterator Range Exception Test ===" RESET
-            << std::endl;
+  sectionTitle("Iterator Range Exception Test");
   try {
     Span smallSpan(5);
     std::vector<int> vec;
     for (int i = 0; i < 10; ++i)
-      vec.push_back(rand() % 100);
+      vec.push_back(rand());
     smallSpan.addNumbers(vec.begin(), vec.end());
   } catch (const std::exception& e) {
     std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
